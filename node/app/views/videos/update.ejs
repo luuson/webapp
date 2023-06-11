@@ -1,0 +1,27 @@
+<h1>Edit Video</h1>
+
+<form method="POST" action="/videos/<%= video.id %>?_method=PUT" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" name="title" value="<%= video.title %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags:</label>
+    <input type="text" class="form-control" id="tags" name="tags" value="<%= video.tags %>" required>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control" id="comment" name="comment" required><%= video.comment %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="video">Video File:</label>
+    <input type="file" class="form-control-file" id="video" name="video">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update Video</button>
+</form>
+
+<a href="/videos/<%= video.id %>" class="btn btn-secondary">Cancel</a>

@@ -1,0 +1,31 @@
+<% include('../layouts/main') %>
+
+<% block('content') %>
+<div class="container">
+  <h1>Video List</h1>
+  <a href="/video/create" class="btn btn-primary mb-3">Create New Video</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% videos.forEach(function(video) { %>
+      <tr>
+        <td><%= video.id %></td>
+        <td><%= video.title %></td>
+        <td><%= video.description %></td>
+        <td>
+          <a href="/video/edit/<%= video.id %>" class="btn btn-primary btn-sm">Edit</a>
+          <a href="/video/delete/<%= video.id %>" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% endblock %>

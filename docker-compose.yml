@@ -1,0 +1,36 @@
+version: '3'
+services:
+  node:
+    container_name: webapp
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./node/app:/app
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_webapp
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: web_api
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+
+  apache:
+    container_name: apache
+    image: httpd:2.4
+    ports:
+      - '80:80'
+    volumes:
+      - ./apache/www:/usr/local/apache2/htdocs

@@ -1,0 +1,31 @@
+<% include('./views/app/layout.ejs') %>
+
+<% block('content') %>
+<div class="container">
+  <h1>Create New Video</h1>
+
+  <form method="POST" action="/videos" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input type="text" class="form-control" id="tags" name="tags" required>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" id="comment" name="comment" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="video">Video File:</label>
+      <input type="file" class="form-control-file" id="video" name="video">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Video</button>
+  </form>
+</div>
+<% endblock %>
